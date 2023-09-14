@@ -71,4 +71,3 @@ def get_exact_posts_db():
         return exact_post
 
     return False
-
