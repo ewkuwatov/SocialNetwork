@@ -6,13 +6,12 @@ class LoginUserModel(BaseModel):
 
 
 class RegisterUserModel(BaseModel):
-    name = str
-    surname = str
-    email = str
-    phone_number = str
-    city = str
-    profile_photo = str
-    password = str
+    name: str
+    surname: str
+    email: str
+    phone_number: str
+    city: str
+    password: str
 
 
 class EditUserModel(BaseModel):

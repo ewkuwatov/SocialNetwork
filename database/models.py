@@ -20,7 +20,7 @@ class User(Base):
 class UserPost(Base):
     __tablename__ = 'user_post'
     id = Column(Integer, autoincrement=True, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
     post_text = Column(String)
 
     publish_date = Column(DateTime)
@@ -32,13 +32,13 @@ class PostPhoto(Base):
     post_id = Column(Integer, ForeignKey('user_post.id'))
     post_photo = Column(String)
 
-    post_fk = relationship(User, lazy='subquery')
+    post_fk = relationship(UserPost, lazy='subquery')
 
 class Comment(Base):
     __tablename__ = 'post_comments'
     id = Column(Integer, autoincrement=True, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
-    user_id = Column(Integer, ForeignKey('user_post.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
+    post_id = Column(Integer, ForeignKey('user_post.id'))
     comment_text = Column(String)
 
     user_fk = relationship(User, lazy='subquery')

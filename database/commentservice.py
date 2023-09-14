@@ -40,3 +40,10 @@ def change_comment_db(comment_id, new_comment, user_id):
         return 'Комментарий изменен'
 
     return False
+
+def get_post_comments(post_id):
+    db = next(get_db())
+
+    exact_post_comments = db.query(Comment).filter_by(post_id=post_id).all()
+
+    return exact_post_comments

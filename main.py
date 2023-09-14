@@ -3,8 +3,8 @@ from starlette.staticfiles import StaticFiles
 
 from photo.photo_api import photo_router
 from comments.comments_api import comments_router
-from post.user_post_api import user_router
-from user.user_api import posts_router
+from post.user_post_api import user_post_router
+from user.user_api import user_router
 
 from database import Base, engine
 Base.metadata.create_all(bind=engine)
@@ -12,8 +12,8 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(docs_url='/')
 
 # Регистрация компонентов
-app.include_router(posts_router)
 app.include_router(user_router)
+app.include_router(user_post_router)
 app.include_router(photo_router)
 app.include_router(comments_router)
 

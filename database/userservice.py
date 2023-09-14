@@ -22,7 +22,7 @@ def register_user_db(name, surname, email, phone_number, city, password):
     return 'Пользователь успешно зарегистрирован'
 
 # Вход в аккаунт
-def login_get_db(email, password):
+def login_user_db(email, password):
     db = next(get_db())
 
     cheker = db.query(User).filter_by(email=email).first()

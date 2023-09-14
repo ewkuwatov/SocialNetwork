@@ -45,8 +45,12 @@ def delete_post_db(post_id):
     db = next(get_db())
 
     exact_post = db.query(UserPost).filter_by(id=post_id).first()
+    exact_post_photos = db.query(PostPhoto).filter_by(post_id=post_id).all()
 
     if exact_post:
+        db.delete(*exact_post_photos)
+        db.commit()
+
         db.delete(exact_post)
         db.commit()
 
@@ -71,3 +75,4 @@ def get_exact_posts_db():
         return exact_post
 
     return False
+
