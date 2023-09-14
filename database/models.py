@@ -34,7 +34,7 @@ class PostPhoto(Base):
 
     post_fk = relationship(User, lazy='subquery')
 
-class Comment(Base)
+class Comment(Base):
     __tablename__ = 'post_comments'
     id = Column(Integer, autoincrement=True, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
